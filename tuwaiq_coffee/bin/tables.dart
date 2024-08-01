@@ -1,36 +1,39 @@
 import 'dart:io';
 
 class Tables {
-  tables() {
-    int countIndoor = 0;
-    int countOutdoor = 0;
+  int countIndoor = 0;
+  int countOutdoor = 0;
 
+  void manageTables() {
     print(
-        "parista : Do you want to set indoor or outdoor or you want to takeaway ?! ");
-    String? set = stdin.readLineSync();
-    switch (set) {
+        "Barista: Do you want to sit indoor, outdoor, or would you like to takeaway?");
+    String? choice = stdin.readLineSync()?.toLowerCase();
+
+    switch (choice) {
       case 'takeaway':
+        print("You chose takeaway.");
         break;
       case 'indoor':
-        if (countIndoor <= 8) {
-          print("your table indoor  is ready  ");
+        if (countIndoor < 8) {
+          countIndoor++;
+          print(
+              "Your indoor table is ready. Number of indoor tables occupied: $countIndoor");
         } else {
-          print("We are sorry there is no indoor table now avilable");
+          print("We are sorry, there are no indoor tables available now.");
         }
-
-        countIndoor++;
         break;
       case 'outdoor':
-        if (countOutdoor <= 5) {
-          print("your table outdoor is ready  ");
+        if (countOutdoor < 5) {
+          countOutdoor++;
+          print(
+              "Your outdoor table is ready. Number of outdoor tables occupied: $countOutdoor");
         } else {
-          print("We are sorry there is no outdoor table now avilable");
+          print("We are sorry, there are no outdoor tables available now.");
         }
-
-        countOutdoor++;
         break;
-
-      // default:
+      default:
+        print(
+            "Invalid choice. Please enter 'indoor', 'outdoor', or 'takeaway'.");
     }
   }
 }
