@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'pilpay.dart';
-import 'tables.dart';
 
 void main() {
   stdout.write('Enter your choice (1 or 2): ');
